@@ -7,4 +7,23 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// body .popover{display: none !important;}
+body .popover{display: none !important;}
+.selectpicker {
+    width: 100px;
+    height: 30px;
+    background-color: #008CBA;
+    color: black;
+    font-size: 14px;
+    font-weight: 200;
+    padding-left: 6px;
+    appearance: none;
+  }
+  .index {
+  text-align: center;
+    color: mediumpurple;
+    font-weight: bold;
+    font-size: 50px;
+  }
+  a{
+    color:mediumpurple!important;
+  }

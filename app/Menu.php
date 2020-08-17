@@ -10,4 +10,7 @@ class Menu extends Model
    {
        return $this->hasMany('App\Restaurant', 'menu_id', 'id');
    }
+//    public function getImages(){
+//     return $this->hasMany('App\Restaurant', 'menu_id','id');
+// }
 }

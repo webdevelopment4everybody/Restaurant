@@ -3,8 +3,8 @@
 <div class="container">
    <div class="row justify-content-center">
        <div class="col-md-8">
+        <div class="index">RESTAURANT EDIT</div>
            <div class="card">
-               <div class="card-header">RESTAURANT EDIT</div>
                <div class="card-body">
                  <form method="POST" action="{{route('restaurant.update',[$restaurant])}}">
                     <div class="form-group">
@@ -22,13 +22,16 @@
                         <input type="text" name="restaurant_employees"  class="form-control" value="{{$restaurant->employees}}">
                         <small class="form-text text-muted">Employes</small>
                     </div>
-                     <select name="menu_id">
-                         @foreach ($menus as $menu)
-                             <option value="{{$menu->id}}" @if($menu->id == $restaurant->menu_id) selected @endif>
-                                 {{$menu->title}} {{$menu->price}} {{$menu->weight}} {{$menu->meat}} {{$menu->about}}
-                             </option>
-                         @endforeach
-                     </select>
+                    <div class="form-group">
+                        <label>Meal of the day</label>
+                        <select class="form-control " name="menu_id">
+                            @foreach ($menus as $menu)
+                                <option value="{{$menu->id}}" @if($menu->id == $restaurant->menu_id) selected @endif>
+                                    {{$menu->title}} {{$menu->price}}EUR {{$menu->weight}}g {{$menu->meat}}G meat {!!$menu->about!!}
+                                </option>
+                            @endforeach
+                        </select><br>
+                    </div>
                         @csrf
                         <button class="btn btn-secondary btn-sm" type="submit">EDIT</button>
                  </form>

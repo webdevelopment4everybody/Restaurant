@@ -21,7 +21,7 @@ class RestaurantController extends Controller
     {
 
 
-        $menus = Menu::all();
+        $menus = Menu::orderBy('title')->get();
         $selectId = 0;
         $sort = '';
         if ($request->menu_id) {
@@ -30,9 +30,9 @@ class RestaurantController extends Controller
                     $restaurants = Restaurant::where('menu_id', $request->menu_id)->orderBy('title')->get();
                     $sort = 'title';
                 }
-                elseif ($request->sort == 'price') {
-                    $restaurants = Restaurant::where('menu_id', $request->menu_id)->orderBy('price')->get();
-                    $sort = 'price';
+                elseif ($request->sort == 'color') {
+                    $restaurants = Restaurant::where('menu_id', $request->menu_id)->orderBy('color')->get();
+                    $sort = 'color';
                 }
                 else {
                     $restaurants = Restaurant::all();
@@ -49,9 +49,9 @@ class RestaurantController extends Controller
                     $restaurants = Restaurant::orderBy('title')->get();
                     $sort = 'title';
                 }
-                elseif ($request->sort == 'price') {
-                    $restaurants = Restaurant::orderBy('price')->get();
-                    $sort = 'price';
+                elseif ($request->sort == 'color') {
+                    $restaurants = Restaurant::orderBy('color')->get();
+                    $sort = 'color';
                 }
                 else {
                     $restaurants = Restaurant::all();

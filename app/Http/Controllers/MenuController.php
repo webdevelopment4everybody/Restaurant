@@ -44,7 +44,7 @@ class MenuController extends Controller
     {
         $validator = Validator::make($request->all(),
         [
-            'menu_title' => ['required', 'min:3', 'max:64'],
+            'menu_title' => ['required|alpha', 'min:3', 'max:64'],
             'menu_about' => ['required', 'min:3', 'max:64'],
         ],
         [
@@ -62,9 +62,19 @@ class MenuController extends Controller
         $menu->price = $request->menu_price;
         $menu->weight = $request->menu_weight;
         $menu->meat = $request->menu_meat;
+        $menu->image = '';
         $menu->about = $request->menu_about;
+        
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = $request->file('image')->getClientOriginalName();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $name);
+            $menu->image = $name;
+        }
         $menu->save();
         return redirect()->route('menu.index')->with('success_message', 'Sekmingai įrašytas.');
+        //  return redirect()->route('menu.index');
     }
 
     /**

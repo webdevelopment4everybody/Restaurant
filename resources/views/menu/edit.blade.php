@@ -5,8 +5,8 @@
 <div class="container">
    <div class="row justify-content-center">
        <div class="col-md-8">
+        <div class="index">EDIT MENU</div>
            <div class="card">
-               <div class="card-header">EDIT MENU</div>
                <div class="card-body">
                  <form method="POST" action="{{route('menu.update',[$menu->id])}}">
                     <div class="form-group">
@@ -29,11 +29,8 @@
                         <input type="text" name="menu_meat"  class="form-control" value="{{$menu->meat}}">
                         <small class="form-text text-muted">meat.</small>
                     </div>
-                    <div class="form-group">
                         <label>About</label>
-                        <textarea name="menu_about"  class="description form-control" cols="30" rows="10">{{$menu->about}}</textarea>
-                        <small class="form-text text-muted">About</small>
-                    </div>
+                        <textarea name="menu_about"  id="summernote">{!!$menu->about!!}</textarea>
                      @csrf
                      <button class="btn btn-secondary btn-sm" type="submit">EDIT</button>
                   </form>
@@ -42,12 +39,9 @@
        </div>
    </div>
 </div>
-<script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
 <script>
-    tinymce.init({
-        selector:'textarea.description',
-        width: 900,
-        height: 300
-    });
+    $(document).ready(function() {
+       $('#summernote').summernote();
+     });
 </script>
 @endsection

@@ -14,7 +14,13 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{-- {{ __('You are logged in!') }} --}}
+                    <?php
+
+                    header('Location: http://localhost/Restoranas/public/menus');
+                    die();
+
+                    ?>
                 </div>
             </div>
         </div>

@@ -3,8 +3,8 @@
 <div class="container">
    <div class="row justify-content-center">
        <div class="col-md-8">
+        <div class="index">CREATE RESTAURANT</div>
            <div class="card">
-               <div class="card-header">RESTAURANT CREATE</div>
                <div class="card-body">
                  <form method="POST" action="{{route('restaurant.store')}}">
                     <div class="form-group">
@@ -23,7 +23,7 @@
                         <small class="form-text text-muted">Employes</small>
                     </div>
                     <div class="form-group">
-                        <label>Dienos meniu patiekalas</label>
+                        <label>Meal of the day</label>
                         <select class="form-control " name="menu_id">
                             @foreach ($menus as $menu)
                                 <option value="{{$menu->id}}">{{$menu->title}} {{$menu->price}} </option>
